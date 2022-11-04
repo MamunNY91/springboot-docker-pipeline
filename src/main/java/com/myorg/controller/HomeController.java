@@ -11,7 +11,7 @@ public class HomeController
    {
       
 	   String msg = "hello simul,";
-	   String msg2 = "Trying out Git stash";
+	   String msg2= "Forgot to add this";
 
 	   return msg+msg2;
    }
