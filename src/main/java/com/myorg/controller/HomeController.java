@@ -9,7 +9,9 @@ public class HomeController
 	@GetMapping("/")
    public String showHomePage() 
    {
-	   String msg = "hello mamun";
+
+	   String msg = "hello simul";
+
 	   return msg;
    }
 }
