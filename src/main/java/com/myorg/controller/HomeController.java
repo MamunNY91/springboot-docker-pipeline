@@ -27,5 +27,12 @@ public class HomeController
 		   String u2 = " User2";
 		   return u1+u2;
 	   }
+	@GetMapping("/country")
+	   public String showCountry() 
+	   {
+		   String c1 = "Bangladesh";
+		   String c2 = " USA";
+		   return c1+c2;
+	   }
    
 }
