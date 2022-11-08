@@ -9,8 +9,11 @@ public class HomeController
 	@GetMapping("/")
    public String showHomePage() 
    {
-	   String msg = "hello world";
-	   String msg2 = " added test msg";
+
+      
+	   String msg = "hello simul,";
+	   String msg2= "Forgot to add this";
+
 	   return msg+msg2;
    }
 	@GetMapping("/product")
