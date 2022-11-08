@@ -10,7 +10,7 @@ public class HomeController
    public String showHomePage() 
    {
 	   String msg = "hello world";
-	   String msg2 = " added test msg";
+	   String msg2 = " added test msg again";
 	   return msg+msg2;
    }
 }
