@@ -13,4 +13,12 @@ public class HomeController
 	   String msg2 = " added test msg";
 	   return msg+msg2;
    }
+	@GetMapping("/product")
+	   public String showProduct() 
+	   {
+		   String p1 = "Laptop";
+		   String p2 = " Tablet";
+		   return p1+p2;
+	   }
+   
 }
