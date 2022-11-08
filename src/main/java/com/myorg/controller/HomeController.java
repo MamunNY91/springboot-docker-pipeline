@@ -20,5 +20,12 @@ public class HomeController
 		   String p2 = " Tablet";
 		   return p1+p2;
 	   }
+	@GetMapping("/user")
+	   public String showUser() 
+	   {
+		   String u1 = "User1";
+		   String u2 = " User2";
+		   return u1+u2;
+	   }
    
 }
