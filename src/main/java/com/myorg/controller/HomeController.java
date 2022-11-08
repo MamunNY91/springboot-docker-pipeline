@@ -34,5 +34,12 @@ public class HomeController
 		   String c2 = " USA";
 		   return c1+c2;
 	   }
+	@GetMapping("/order")
+	   public String showOrder() 
+	   {
+		   String o1 = "Jacket";
+		   String o2 = " Pant";
+		   return o1+o2;
+	   }
    
 }
