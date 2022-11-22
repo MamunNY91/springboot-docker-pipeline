@@ -15,7 +15,7 @@ pipeline{
         stage("Build Jar"){
           when{
             expression {
-              BRANCH_NAME='master'
+              BRANCH_NAME=='master'
             }
           }
             steps{
@@ -27,7 +27,7 @@ pipeline{
             when{
               expression
               {
-                 BRANCH_NAME='master'
+                 BRANCH_NAME=='master'
               }
             }
             steps{
