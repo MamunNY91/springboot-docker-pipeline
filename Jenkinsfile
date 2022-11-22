@@ -1,32 +1,37 @@
-def externalSC
+
 pipeline{
 
     agent any
-    tools{
-        maven 'maven-3.8'
-    }
+   
     stages{
-      stage("init"){
+
+       stage("Execute Test"){
             steps{
-               script{
-                 externalSC = load "script.groovy"
-               }
-            }
-      }
-        stage("Build Jar"){
-            steps{
-               script{
-                 echo "Building the app"
-                 sh "mvn package"
-               }
+              echo "Executing test job"
             }
           
         }
-          stage("Build Image"){
+     
+        stage("Build Jar"){
+          when{
+            expression {
+              BRANCH_NAME='master'
+            }
+          }
             steps{
-               script{
-                 externalSC.buildAndPushImage()
-               }
+              echo "builing app"
+            }
+          
+        }
+          stage("Deploy"){
+            when{
+              expression
+              {
+                 BRANCH_NAME='master'
+              }
+            }
+            steps{
+              echo "Deploying app"
             }
           
         }
