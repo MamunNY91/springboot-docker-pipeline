@@ -1,4 +1,5 @@
-def externalSC
+#!/usr/bin/env groovy
+@Library('jenkins-shared-library')
 pipeline{
 
     agent any
@@ -16,8 +17,7 @@ pipeline{
         stage("Build Jar"){
             steps{
                script{
-                 echo "Building the app"
-                 sh "mvn package"
+                buildJar()
                }
             }
           
@@ -25,7 +25,7 @@ pipeline{
           stage("Build Image"){
             steps{
                script{
-                 externalSC.buildAndPushImage()
+                 buildImage()
                }
             }
           
