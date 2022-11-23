@@ -25,7 +25,7 @@ pipeline{
           stage("Build Image"){
             steps{
                script{
-                 buildImage()
+                 buildImage 'samny91/spring-boot-parameter-image:1.0'
                }
             }
           
