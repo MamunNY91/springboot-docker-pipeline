@@ -20,7 +20,8 @@ pipeline{
                     sh 'mvn build-helper:parse-version versions:set \
                     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit'
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    def version = matcher[0][1]
+                    def version = readMavenPom().getVersion()
+                    echo "version ===========  $version"
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
             }
@@ -40,6 +41,7 @@ pipeline{
 //               script{
 //                 externalSC.buildAndPushImage()
 //               }
+                /*
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-cred',passwordVariable:'PASS',usernameVariable:'USER')])
@@ -50,6 +52,8 @@ pipeline{
                                 sh "docker push samny91/springboot-docker-pipeline:$IMAGE_NAME"
                             }
                 }
+
+                 */
             }
           
         }
