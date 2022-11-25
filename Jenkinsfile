@@ -13,6 +13,15 @@ pipeline{
                }
             }
       }
+        stage("Increment version") {
+            script{
+                echo "increment app version"
+                sh 'mvn build-helper:parse-version versions:set \
+                    -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion} \
+                     .\\\${parsedVersion.nextIncrementalVersion} versions:commit'
+
+            }
+        }
         stage("Build Jar"){
             steps{
                script{
