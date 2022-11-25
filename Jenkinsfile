@@ -19,8 +19,8 @@ pipeline{
                     echo "increment app version"
                     sh 'mvn build-helper:parse-version versions:set \
                     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit'
-                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    //def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+                    def version = sh (script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
                     echo "version ===========  $version"
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
