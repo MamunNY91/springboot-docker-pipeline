@@ -24,9 +24,10 @@ pipeline{
         }
           stage("Build Image"){
             steps{
-               script{
-                 //externalSC.buildAndPushImage()
-               }
+//               script{
+//                 externalSC.buildAndPushImage()
+//               }
+                echo "builing image"
             }
           
         }
