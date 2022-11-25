@@ -30,7 +30,7 @@ pipeline{
             steps{
                script{
                  echo "Building the app"
-                 sh "mvn clean ipackage"
+                 sh "mvn clean package"
                }
             }
           
