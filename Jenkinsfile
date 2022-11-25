@@ -42,7 +42,7 @@ pipeline{
 //               script{
 //                 externalSC.buildAndPushImage()
 //               }
-                /*
+
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-cred',passwordVariable:'PASS',usernameVariable:'USER')])
@@ -54,7 +54,7 @@ pipeline{
                             }
                 }
 
-                 */
+
             }
           
         }
