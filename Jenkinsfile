@@ -25,7 +25,7 @@ pipeline{
           stage("Build Image"){
             steps{
                script{
-                 externalSC.buildAndPushImage()
+                 //externalSC.buildAndPushImage()
                }
             }
           
