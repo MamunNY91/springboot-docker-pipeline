@@ -19,7 +19,9 @@ pipeline{
                     echo "increment app version"
                     sh 'mvn build-helper:parse-version versions:set \
                     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} versions:commit'
-
+                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+                    def version = matcher[0][1]
+                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
             }
 
@@ -28,7 +30,7 @@ pipeline{
             steps{
                script{
                  echo "Building the app"
-                 sh "mvn package"
+                 sh "mvn clean ipackage"
                }
             }
           
@@ -38,7 +40,16 @@ pipeline{
 //               script{
 //                 externalSC.buildAndPushImage()
 //               }
-                echo "builing image"
+                script{
+
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-cred',passwordVariable:'PASS',usernameVariable:'USER')])
+                            {
+                                //make sure to use doubkle quotes if you use env var
+                                sh "docker build -t samny91/springboot-docker-pipeline:$IMAGE_NAME ."
+                                sh 'echo $PASS | docker login -u $USER --password-stdin'
+                                sh "docker push samny91/springboot-docker-pipeline:$IMAGE_NAME"
+                            }
+                }
             }
           
         }
