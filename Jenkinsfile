@@ -60,6 +60,7 @@ pipeline{
         }
         stage("Commit version change") {
             steps{
+                echo "Commit "
                 script{
                     withCredentials([usernamePassword(credentialsId: 'github-with-pat',passwordVariable:'PASS',usernameVariable:'USER')])
                             {
