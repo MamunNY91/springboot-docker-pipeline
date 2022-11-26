@@ -60,7 +60,7 @@ pipeline{
         }
         stage("Commit version change") {
             steps{
-                echo "Commit "
+                echo "Commit sdadadad "
                 script{
                     //create username and password credentail on jenkins for github, but instaed of using password use PAT
                     withCredentials([usernamePassword(credentialsId: 'github-with-pat',passwordVariable:'PASS',usernameVariable:'USER')])
