@@ -42,7 +42,7 @@ pipeline{
 //               script{
 //                 externalSC.buildAndPushImage()
 //               }
-
+/*
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-cred',passwordVariable:'PASS',usernameVariable:'USER')])
@@ -54,14 +54,14 @@ pipeline{
                             }
                 }
 
-
+*/
             }
           
         }
         stage("Commit version change") {
             steps{
                 script{
-                    withCredentials([usernamePassword(credentialsId: 'github-credential',passwordVariable:'PASS',usernameVariable:'USER')])
+                    withCredentials([usernamePassword(credentialsId: 'github-with-pat',passwordVariable:'PASS',usernameVariable:'USER')])
                             {
                                 //we need to configure git for ex- provide email and name so that people can know who committed. If you
                                 // want to set up globally meaning for all project u can use --global flag otherwise remove it. this is done
