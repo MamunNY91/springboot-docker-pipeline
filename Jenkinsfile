@@ -62,6 +62,7 @@ pipeline{
             steps{
                 echo "Commit "
                 script{
+                    //create username and password credentail on jenkins for github, but instaed of using password use PAT
                     withCredentials([usernamePassword(credentialsId: 'github-with-pat',passwordVariable:'PASS',usernameVariable:'USER')])
                             {
                                 //we need to configure git for ex- provide email and name so that people can know who committed. If you
