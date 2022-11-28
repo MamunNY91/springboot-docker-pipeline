@@ -66,7 +66,7 @@ pipeline{
                 echo "Commit sdadadad "
                 script{
                     //create username and password credentail on jenkins for github, but instaed of using password use PAT
-                    withCredentials([usernamePassword(credentialsId: 'github-with-pat',passwordVariable:'PASS',usernameVariable:'USER')])
+                    withCredentials([usernamePassword(credentialsId: 'Github-U-Pat',passwordVariable:'PASS',usernameVariable:'USER')])
                             {
                                 //we need to configure git for ex- provide email and name so that people can know who committed. If you
                                 // want to set up globally meaning for all project u can use --global flag otherwise remove it. this is done
