@@ -48,7 +48,7 @@ pipeline{
                         //the following files must be available on ec2
                         sh "scp server-cmds.sh ec2-user@44.203.104.203:/home/ec2-user"
                         sh "scp docker-compose.yaml ec2-user@44.203.104.203:/home/ec2-user "
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@44.203.104.203 $dockerComposeCMD"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@44.203.104.203 $shellCMD"
                     }
                 }
             }
