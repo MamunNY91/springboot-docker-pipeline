@@ -23,6 +23,7 @@ pipeline{
             }
           
         }
+        /*
         stage("deploy app on EC2")
                 {
                     steps{
@@ -33,9 +34,25 @@ pipeline{
                             }
                         }
                     }
-                }
+               }
 
+         */
+       // deploy using docker compose
+        //docker compose file must be available on EC2
+        stage("deploy multiple conatiner using docker-compose"){
+            steps{
+                script{
+                    def dockerComposeCMD = "docker-compose -f docker-compose.yaml up --detach"
+                    sshagent(['ec2-server-key']){
+                        sh "scp docker-compose.yaml ec2-user@44.203.104.203:/home/ec2-user "
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@44.203.104.203 $dockerComposeCMD"
+                    }
+                }
+            }
+        }
     }
+
+
     
 }
 

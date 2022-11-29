@@ -1,0 +1,12 @@
+version: 3.8
+services:
+  springboot-docker-pipeline:
+    image: samny91/springboot-docker-pipeline:1.1.17-40
+    ports:
+      - 8080:8080
+  postgres:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD:my-pwd
