@@ -5,6 +5,10 @@ pipeline{
     tools{
         maven 'maven-3.8'
     }
+    environment{
+        DOCKER_REPO_SERVER = "417308335742.dkr.ecr.us-east-1.amazonaws.com"
+        DOCKER_REPO = "$DOCKER_REPO_SERVER/springboot-docker-pipeline"
+    }
     stages{
 
         stage("Increment version") {
@@ -36,12 +40,12 @@ pipeline{
                 echo "building image"
                 script{
 
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-cred',passwordVariable:'PASS',usernameVariable:'USER')])
+                    withCredentials([usernamePassword(credentialsId: 'ecr-cred',passwordVariable:'PASS',usernameVariable:'USER')])
                             {
                                 //make sure to use doubkle quotes if you use env var
-                                sh "docker build -t samny91/springboot-docker-pipeline:$IMAGE_NAME ."
-                                sh 'echo $PASS | docker login -u $USER --password-stdin'
-                                sh "docker push samny91/springboot-docker-pipeline:$IMAGE_NAME"
+                                sh "docker build -t $DOCKER_REPO:$IMAGE_NAME ."
+                                sh "echo $PASS | docker login -u $USER --password-stdin $DOCKER_REPO_SERVER"
+                                sh "docker push $DOCKER_REPO:$IMAGE_NAME"
                             }
                 }
 
@@ -88,7 +92,7 @@ pipeline{
                                  here we are specifying commit changes to last commit hash of branch feature/stripe_integration
                                  HEAD points to last commit hash.
                                  */
-                                sh 'git push origin HEAD:deploy_docker_im_k8s '
+                                sh 'git push origin HEAD:deploy_docker_im_k8s_ECR '
 
                             }
                 }

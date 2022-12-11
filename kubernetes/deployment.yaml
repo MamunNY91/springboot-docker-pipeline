@@ -15,10 +15,10 @@ spec:
         app: $APP_NAME
     spec:
       imagePullSecrets:
-        - name: my-regitry-key
+        - name: aws-registry-key
       containers:
         - name: $APP_NAME
-          image: samny91/springboot-docker-pipeline:$IMAGE_NAME
+          image: $DOCKER_REPO:$IMAGE_NAME
           imagePullPolicy: Always #always fetches new image when the pod start
           ports:
             - containerPort: 8080
