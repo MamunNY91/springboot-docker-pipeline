@@ -29,7 +29,7 @@ pipeline{
 
 
                         //the following files must be available on ec2
-                        sh "kubectl version"
+                        sh "kubectl get nodes"
                 }
             }
         }
