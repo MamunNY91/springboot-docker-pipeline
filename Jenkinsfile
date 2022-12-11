@@ -88,7 +88,7 @@ pipeline{
                                  here we are specifying commit changes to last commit hash of branch feature/stripe_integration
                                  HEAD points to last commit hash.
                                  */
-                                sh 'git push origin HEAD:deploy_docker_im_k8s '
+                                sh 'git push origin deploy_docker_im_k8s '
 
                             }
                 }
