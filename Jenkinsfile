@@ -73,8 +73,8 @@ pipeline{
                                 //we need to configure git for ex- provide email and name so that people can know who committed. If you
                                 // want to set up globally meaning for all project u can use --global flag otherwise remove it. this is done
                                 //only once. you can set this by loggin into jenkins server as well
-                                //sh 'git config --global user.email "mamun@example.com"'
-                                //sh 'git config --global user.name "mamun"'
+                                sh 'git config --global user.email "mamun@example.com"'
+                                sh 'git config --global user.name "mamun"'
                                 sh 'git status'
                                 sh 'git branch'
                                 sh 'git config --list'
