@@ -32,7 +32,7 @@ pipeline{
 
                 script{
                     //the following files must be available on ec2
-                        sh "kubectl get nodes"
+                        sh "kubectl create deployment nginx-deployment --image=nginx"
                 }
             }
         }
