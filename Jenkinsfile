@@ -24,11 +24,12 @@ pipeline{
           
         }
         stage("deploy on k8s"){
+            environment{
+                AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key')
+            }
             steps{
-                environment{
-                    AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key')
-                    AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key')
-                }
+
                 script{
                     //the following files must be available on ec2
                         sh "kubectl get nodes"
