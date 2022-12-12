@@ -91,6 +91,7 @@ pipeline{
                                  HEAD points to last commit hash.
                                  */
                                 sh 'git push origin deploy_docker_im_k8s'
+                                sh 'git pull origin deploy_docker_im_k8s'
 
                             }
                 }
