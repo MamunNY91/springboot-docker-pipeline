@@ -79,7 +79,7 @@ pipeline{
                                 sh 'git branch'
                                 sh 'git config --list'
                                 //local git repo on jenkins_server does not know about remote repo so we need to mention
-                                git sh 'git remote set-url origin https://$USER:$PASS@github.com/MamunNY91/springboot-docker-pipeline.git'
+                                sh 'git remote set-url origin https://$USER:$PASS@github.com/MamunNY91/springboot-docker-pipeline.git'
                                 //execute only once
                                 //sh 'git checkout -b deploy_docker_im_k8s'
                                 sh 'git branch'
