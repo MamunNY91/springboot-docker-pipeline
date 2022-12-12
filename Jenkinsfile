@@ -73,14 +73,15 @@ pipeline{
                                 //we need to configure git for ex- provide email and name so that people can know who committed. If you
                                 // want to set up globally meaning for all project u can use --global flag otherwise remove it. this is done
                                 //only once. you can set this by loggin into jenkins server as well
-                                sh 'git config --global user.email "mamun@example.com"'
-                                sh 'git config --global user.name "mamun"'
+                                //sh 'git config --global user.email "mamun@example.com"'
+                                //sh 'git config --global user.name "mamun"'
                                 sh 'git status'
                                 sh 'git branch'
                                 sh 'git config --list'
                                 //local git repo on jenkins_server does not know about remote repo so we need to mention
                                 sh 'git remote set-url origin https://$USER:$PASS@github.com/MamunNY91/springboot-docker-pipeline.git'
-                                sh 'git checkout -b deploy_docker_im_k8s'
+                                //execute only once
+                                //sh 'git checkout -b deploy_docker_im_k8s'
                                 sh 'git branch'
                                 //commit version change so that a new build can use this version and increment it
                                 sh 'git add .'
