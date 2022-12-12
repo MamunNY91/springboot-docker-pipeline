@@ -53,13 +53,14 @@ pipeline{
           
         }
         stage("deploy on k8s"){
-            echo "deploying to k8s"
+
             environment{
                 AWS_ACCESS_KEY_ID = credentials('jenkins_aws_access_key')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_secret_key')
                 APP_NAME = 's-docker-pipeline'
             }
             steps{
+                echo "deploying to k8s"
 
                 script{
 
