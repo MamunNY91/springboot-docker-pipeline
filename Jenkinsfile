@@ -88,7 +88,7 @@ pipeline{
                                  here we are specifying commit changes to last commit hash of branch feature/stripe_integration
                                  HEAD points to last commit hash.
                                  */
-                                sh 'git push origin deploy_docker_im_k8s '
+                                sh 'git push  https://$USER:$PASS@github.com/MamunNY91/springboot-docker-pipeline/deploy_docker_im_k8s '
 
                             }
                 }
