@@ -59,7 +59,7 @@ pipeline{
                 APP_NAME = 's-docker-pipeline'
             }
             steps{
-
+                echo "deploying to k8s"
                 script{
 
                         sh "envsubst < kubernetes/deployment.yaml | kubectl apply -f -"
