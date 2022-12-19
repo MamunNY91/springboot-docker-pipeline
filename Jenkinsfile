@@ -23,6 +23,9 @@ pipeline{
             }
           
         }
+        stage("provision server"){
+            //tf will provision EC2 instance so that we can deploy our app on it
+        }
         /*
         stage("deploy app on EC2")
                 {
